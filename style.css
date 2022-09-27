@@ -1,18 +1,113 @@
-body{
-  margin: 0;
-  background-color:#CFA5B4;
-  display: flex;
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
 }
 
-#container {
-  background-color: white;
-  width: 800px;
-  height:500px;
-  border: 1px solid plum;
+body {
+  height: 100vh;
+  background-color: #9F8082;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.info {
+  width: 200px;
+  height: 640px;
+  margin-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-h1{
-  margin:0;
+.time,
+.points {
+  width: 150px;
+  height: 40px;
+  text-align: center;
+}
+
+#point,
+#timeLeft {
+  padding:10px;
+  background-color: #AD9B9A;
+  font-size: 24px;
+  border: 2px solid #651204;
+  border-radius: 5px;
+}
+
+h2,
+p {
+  color: #651204;
+}
+
+.container {
+  width: 640px;
+  height: 640px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color:whitesmoke;
+  border-radius: 10px;
+  perspective: 1000px;
+}
+
+.card {
+  width: calc(25% - 10px);
+  height: calc(25% - 10px);
+  margin: 5px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.card:active {
+transform: scale(.97);
+transition: transform .2s;
+}
+
+.card.flip {
+transform: rotateY(180deg);
+}
+
+.shake{
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-13px);
+  }
+  40%{
+    transform: translateX(13px);
+  }
+  60%{
+    transform: translateX(-8px);
+  }
+  80%{
+    transform: translateX(8px);
+  }
+}
+
+.view {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border: 2px solid #AD9B9A;
+  backface-visibility: hidden;
+}
+
+.front-view {
+  transform: rotateY(180deg);
 }

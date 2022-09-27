@@ -4,24 +4,112 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
-
-    <title>Memory Game</title>
   </head>
   <body>
-    <div id="container"></div>
-    <h1>hello world</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-      possimus assumenda nobis aut libero, qui quibusdam id? Impedit et nemo
-      illum saepe, totam, deserunt atque velit voluptatibus aut beatae
-      accusantium.
-    </p>
+    <section class="info">
+      <div class="time">
+        <h2>Time</h2>
+        <div class="timer"><p id="timeLeft">1: 00</p></div>
+      </div>
+      <div class="points"><h2>Points</h2>
+        <div class="point">
+          <p id="point">0</p></div>
+      </div></div>
+      <div>
+        <button id="start-btn">Start Game</button>
+      </div>
+    </section>
+    <section class="container">
+      <div class="card" id="card-1">
+        <img src="game-images/front-view-1.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-2">
+        <img src="game-images/front-view-2.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-3">
+        <img src="game-images/front-view-3.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-4">
+        <img src="game-images/front-view-4.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-5">
+        <img src="game-images/front-view-5.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-6">
+        <img src="game-images/front-view-6.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-7">
+        <img src="game-images/front-view-7.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-8">
+        <img src="game-images/front-view-8.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-1">
+        <img src="game-images/front-view-1.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-2">
+        <img src="game-images/front-view-2.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-3">
+        <img src="game-images/front-view-3.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-4">
+        <img src="game-images/front-view-4.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-5">
+        <img src="game-images/front-view-5.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-6">
+        <img src="game-images/front-view-6.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-7">
+        <img src="game-images/front-view-7.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+
+      <div class="card" id="card-8">
+        <img src="game-images/front-view-8.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+    </section>
     <script src="main.js"></script>
   </body>
 </html>
