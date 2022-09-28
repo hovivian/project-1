@@ -1,16 +1,16 @@
 * {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
   height: 100vh;
-  background-color: #9F8082;
+  background-color: #9f8082;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .info {
@@ -33,8 +33,8 @@ body {
 
 #point,
 #timeLeft {
-  padding:10px;
-  background-color: #AD9B9A;
+  padding: 10px;
+  background-color: #ad9b9a;
   font-size: 24px;
   border: 2px solid #651204;
   border-radius: 5px;
@@ -51,7 +51,7 @@ p {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
   border-radius: 10px;
   perspective: 1000px;
 }
@@ -63,37 +63,41 @@ p {
   position: relative;
   cursor: pointer;
   transform-style: preserve-3d;
-  transition: transform .5s;
+  transition: transform 0.5s;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border: 2px solid #ad9b9a;
 }
 
 .card:active {
-transform: scale(.97);
-transition: transform .2s;
+  transform: scale(0.97);
+  transition: transform 0.2s;
 }
 
 .card.flip {
-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 
-.shake{
+.shake {
   animation: shake 0.35s ease-in-out;
 }
 
 @keyframes shake {
-  0%, 100%{
-    transform: translateX(0);
+  0%,
+  100% {
+    transform: translateX(0) rotateY(180deg);
   }
-  20%{
-    transform: translateX(-13px);
+  20% {
+    transform: translateX(-13px) rotateY(180deg);
   }
-  40%{
-    transform: translateX(13px);
+  40% {
+    transform: translateX(13px) rotateY(180deg);
   }
-  60%{
-    transform: translateX(-8px);
+  60% {
+    transform: translateX(-8px) rotateY(180deg);
   }
-  80%{
-    transform: translateX(8px);
+  80% {
+    transform: translateX(8px) rotateY(180deg);
   }
 }
 
@@ -102,9 +106,9 @@ transform: rotateY(180deg);
   height: 100%;
   position: absolute;
   padding: 20px;
-  border-radius: 5px;
+  /* border-radius: 5px;
   background-color: whitesmoke;
-  border: 2px solid #AD9B9A;
+  border: 2px solid #ad9b9a; */
   backface-visibility: hidden;
 }
 

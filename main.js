@@ -1,28 +1,20 @@
-//variables
-const $displayPoints = $("#point");
-let $points = 0;
+// Cards Related
 const $container = $(".container");
 const $card = $(".card");
 let choices = []
-const $grid = []
-const $types = {
-  16: ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6', 'card-7', 'card-8'],
-  36: ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6', 'card-7', 'card-8', 'card-9', 'card-10', 'card-11', 'card-12', 'card-13', 'card-14', 'card-15', 'card-16', 'card-17', 'card-18'],
-}
 
-//done
-// const flipCard = (e) => {
-//   const $clicked = $(e.currentTarget);
-//   $clicked.toggleClass('flip');
-// }
+// Controls
+const $startGameBtn = $("#start-btn");
 
-// $card.on("click", flipCard);
+// Points
+const $displayPoints = $("#point");
+let $points = 0;
 
-//timer
-const $startingMinute = 1;
-let $time = $startingMinute * 60;
-
+// timer
 const $timeLeft = $("#timeLeft");
+const $startingMinute = 1;
+let timeInterval = null
+let $time = $startingMinute * 60;
 
 const updateTime = () => {
   if ($time >= 0) {
@@ -32,10 +24,9 @@ const updateTime = () => {
     $timeLeft.text(`${$minutes}: ${$seconds}`);
     $time--;
   } else {
-    clearInterval
+    clearInterval(timeInterval)
   }
 }
-///
 
 const flipCard = (e) => {
   const $flip = $(e.currentTarget);
@@ -51,47 +42,45 @@ const matchedCards = () => {
   let choiceOne = choices[0];
   let choiceTwo = choices[1];
   if (choices.length === 2) {
-    if (choices[0].attr("id") === choices[1].attr("id")) {
+    if (choices[0].attr("data-type") === choices[1].attr("data-type")) {
       addPoints();
       console.log("matched cards!");
     } else {
       console.log("the cards don't match!");
       setTimeout(() => {
-        choiceOne.addClass('shake');
-        choiceTwo.addClass('shake');
+        choiceOne.find('.front-view').addClass('shake');
+        choiceTwo.find('.front-view').addClass('shake');
       }, 400);
       setTimeout(() => {
         choiceOne.toggleClass('flip');
         choiceTwo.toggleClass('flip');
-        choiceOne.removeClass('shake')
-        choiceTwo.removeClass('shake')
+        choiceOne.find('.front-view').removeClass('shake')
+        choiceTwo.find('.front-view').removeClass('shake')
       }, 1200);
-      choices.length = 0;
     }
-  } else {
-    //do nothing
+    choices = []
   }
 }
 
 const handleClick = (e) => {
   const $clicked = $(e.currentTarget);
-  flipCard(e);
-  choices.push($clicked);
-  matchedCards();
+  const id = $clicked.attr('data-id')
+  const alreadyExist = choices.find(($elem) => $elem.attr('data-id') === id)
+  if (!alreadyExist) {
+    flipCard(e);
+    choices.push($clicked);
+    matchedCards();
+  }
 }
-
-$card.on("click", handleClick);
 
 const startGame = () => {
   // get value of the selected difficulty
-  setInterval(updateTime, 1000);
-  handleClick();
-  // generateGrid(cardNum)
-  // renderGrid()
+  timeInterval = setInterval(updateTime, 1000);
+  generateGrid(4)
   //hide start game button
 }
 
-const $startGameBtn = $("#start-btn");
+$card.on("click", handleClick);
 $startGameBtn.on("click", startGame);
 
 
@@ -106,19 +95,41 @@ $startGameBtn.on("click", startGame);
 //   }
 // }
 
-// const generateGrid = (cardNum) => {
-//   const clone = [...types[cardNum], ...types[cardNum]]
-//   const shuffled = []
-//   // code to shuffle the array
-//   for (let i = 0; i < Math.sqrt(cardNum); i++) {
-//     grid.push(shuffled.splice(0, Math.sqrt(cardNum)).map((type) => ({
-//       type,
-//       show: false
-//     })))
-//   }
-// }
+const shuffle = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
 
-// const renderGrid = () => {}
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]
+    ];
+  }
+
+  return array;
+}
+
+// num is 4, 6, 8...
+const generateGrid = (rows) => {
+  const baseImageKeys = Array((rows * rows) / 2).fill().map((_, i) => `${i + 1}`)
+  const allImageKeys = [...baseImageKeys, ...baseImageKeys]
+  const shuffled = shuffle(allImageKeys)
+  $container.addClass(`rows-col-${rows}`)
+  shuffled.forEach((imageKey, i) => {
+    $container.append(`
+      <div class="card" data-id = "${i}" data-type="card-${imageKey}" >
+        <img src="game-images/front-view-${imageKey}.png" alt="" class="front-view view"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view" />
+      </div>
+    `)
+  })
+}
 
 //bonus
 // const $firstMove = $();
