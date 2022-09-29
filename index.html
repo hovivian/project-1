@@ -14,8 +14,22 @@
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
+    <audio id="clickSound" preload="auto" src ="click.mp4"></audio>
+
   </head>
   <body>
+      <div class="startPage">
+        <div class="startPageContainer">
+        <h1 class="title">Tarot Card Memory Game</h1>
+        <img src="https://media1.giphy.com/media/R7YidrD7nUOfyadop7/giphy.gif?cid=ecf05e47li17558fb4oo7x597pgmobrqq86xcdfjq2y6pbtr&rid=giphy.gif" alt="" height="150px">
+        <h2>Select the number of cards you want to play with</h2>
+        <div class="startButtons">
+        <button id="start-btn-16">16 cards</button>
+        <button id="start-btn-36">36 cards</button>
+        </div>
+        <p>How to play: find as many matching pairs of cards as possible under 1 minute.</p>
+      </div>
+      </div>
     <section class="info">
       <div class="time">
         <h2>Time</h2>
@@ -25,9 +39,6 @@
         <div class="point">
           <p id="point">0</p></div>
       </div></div>
-      <div>
-        <button id="start-btn">Start Game</button>
-      </div>
     </section>
     <section id="grid" class="container">
       <!-- <div class="card" data-id="0" data-type="card-1">
@@ -110,6 +121,13 @@
         <img src="game-images/back-view.png" alt="" class="back-view view" />
       </div> -->
     </section>
+    <section class="endPageContainer">
+      <div class="endPageButtons">
+        <p class="results"></p>
+        <button id="reset">Restart</button>
+        </div>
+    </section>
+
     <script src="main.js"></script>
   </body>
 </html>
