@@ -3,7 +3,8 @@ const $container = $(".container");
 const $card = $(".card");
 const card = document.querySelector(".card");
 let choices = [];
-const matched = [];
+let matched = [];
+let winGame = matched.length;
 
 // Controls
 const $startGameBtn16 = $("#start-btn-16");
@@ -11,6 +12,9 @@ const $startGameBtn36 = $("#start-btn-36");
 const $resetBtn = $("#reset")
 const $startPage = $(".startPage");
 const $clickSound = $("#clickSound")
+const $matchedSound = $("#matchedSound")
+const $wrongSound = $("#wrongSound")
+const $winSound = $("#winSound")
 
 // Game finishes
 const $endPageContainer = $(".endPageContainer")
@@ -22,7 +26,7 @@ let $points = 0;
 
 // Timer
 const $timeLeft = $("#timeLeft");
-const $startingMinute = 1;
+const $startingMinute = 2;
 let timeInterval = null;
 let $time = $startingMinute * 60;
 
@@ -36,10 +40,7 @@ const updateTime = () => {
   } else if ($time<0){
     clearInterval(timeInterval);
     gamePlayLoses();
-  } else if ($points=80){
-    clearInterval(timeInterval);
-    gamePlayWins();
-}
+  }
 }
 
 const addPoints = () => {
@@ -53,10 +54,16 @@ const matchedCards = () => {
   if (choices.length === 2) {
     if (choices[0].attr("data-type") === choices[1].attr("data-type")) {
       addPoints();
+      matchedSound();
       matched.push(choiceOne)
       console.log("matched cards!");
+      if (matched.length>=8){
+        gamePlayWins();
+        clearInterval(timeInterval);
+      }
     } else {
       console.log("the cards don't match!");
+      wrongSound();
       setTimeout(() => {
         choiceOne.find('.front-view').addClass('shake');
         choiceTwo.find('.front-view').addClass('shake');
@@ -80,8 +87,12 @@ const wrongSound = () => {
   $wrongSound[0].play();
 }
 
-const correctSound = () => {
-  $correctSound[0].play();
+const matchedSound = () => {
+  $matchedSound[0].play();
+}
+
+const winSound = () => {
+  $winSound[0].play();
 }
 
 const flipCard = (e) => {
@@ -101,31 +112,16 @@ const handleClick = (e) => {
     }
 }
 
-// const gamePlay16 = () => {
-//   console.log("hahaha");
-//   if (matched.length ===8){
-//     console.log("game end!");
-//     $endPageContainer.removeClass("hide");
-//     $points += ($time * 10);
-//     $results.html(`<h2>Congratulations! You scored ${$points}!</h2>`);
-//     // $gameFinished = true;
-//   }  else if ($points === 80) {
-//     console.log("game end!");
-//     $endPageContainer.removeClass('hide');
-//     $results.html(`<h2>Time's up! You scored ${$points}!</h2>`);
-//     // $gameFinished = true;
-//   }
-// }
-
 const gamePlayWins = () => {
-    if(matched.length===8)
+    winSound();
     console.log("game end!");
     $endPageContainer.removeClass("hide");
-    // $points += ($time * 10);
+    $points += ($time * 10)+10;
     $results.html( `
       <div>
-        <h2>Congratulations! You scored ${$points += ($time * 10)} points!</h2>
-        <p> Here is your fortune of the day: ${matched[0]}</p>
+        <h2>Congratulations!</h2>
+        <h2 style="margin-bottom: 20px;">You scored ${$points} points!</h2>
+        <p style="margin-bottom: 20px;"> Here is your fortune of the day: ${matched[0]}</p>
         <p>Start another game?</p>
       </div>
     `)
@@ -135,24 +131,12 @@ const gamePlayLoses = () => {
     $endPageContainer.removeClass('hide');
     $results.html( `
       <div>
-        <h2>Time's up! You scored ${$points} points!</h2>
-        <p> Here is your fortune of the day: ${matched[0]}</p>
+        <h2 style="margin-bottom: 20px;">Time's up! You scored ${$points} points!</h2>
+        <p style="margin-bottom: 20px;"> Here is your fortune of the day: ${matched[0]}</p>
         <p>Start another game?</p>
       </div>
     `)
 }
-
-// const gamePlay36 = () => {
-//   if ($points===160) {
-//     $endPageContainer.removeClass('hide')
-//     $points += ($time * 10);
-//     $results.html(`<h2>Congratulations! You scored ${$points}!</h2>`);
-//   } else if($timeLeft === 0){
-//     $endPageContainer.removeClass(hide)
-//     $results.html(`<h2>Time's up! You scored ${$points}!</h2>`);
-//     return gameFinished = true;
-//   }
-// }
 
 const startGame16 = () => {
   timeInterval = setInterval(updateTime, 1000);
@@ -166,10 +150,6 @@ const startGame36 = () => {
   generateGrid(6);
   $startPage.remove();
   $endPageContainer.addClass('hide');
-}
-
-const reset16 = () => {
-
 }
 
 $startGameBtn16.on("click", startGame16);

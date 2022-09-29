@@ -14,26 +14,29 @@
       integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
       crossorigin="anonymous"
     ></script>
-    <audio id="clickSound" preload="auto" src ="click.mp4"></audio>
+    <audio id="clickSound" preload="auto" src ="sound-effects/click.mp4"></audio>
+    <audio id="matchedSound" preload="auto" src ="sound-effects/matched.mp3"></audio>
+    <audio id="wrongSound" preload="auto" src ="sound-effects/wrong.mp3"></audio>
+    <audio id="winSound" preload="auto" src ="sound-effects/win.mp3"></audio>
 
   </head>
   <body>
       <div class="startPage">
         <div class="startPageContainer">
-        <h1 class="title">Tarot Card Memory Game</h1>
-        <img src="https://media1.giphy.com/media/R7YidrD7nUOfyadop7/giphy.gif?cid=ecf05e47li17558fb4oo7x597pgmobrqq86xcdfjq2y6pbtr&rid=giphy.gif" alt="" height="150px">
+        <h1 class="title fix-stroke">Tarot Card Memory Game</h1>
+        <img src="/game-images/crystalball.gif" alt="" height="150px">
         <h2>Select the number of cards you want to play with</h2>
         <div class="startButtons">
         <button id="start-btn-16">16 cards</button>
         <button id="start-btn-36">36 cards</button>
         </div>
-        <p>How to play: find as many matching pairs of cards as possible under 1 minute.</p>
+        <p>How to play: find as many matching pairs of cards as possible under 2 minutes.</p>
       </div>
       </div>
     <section class="info">
       <div class="time">
         <h2>Time</h2>
-        <div class="timer"><p id="timeLeft">1: 00</p></div>
+        <div class="timer"><p id="timeLeft">2: 00</p></div>
       </div>
       <div class="points"><h2>Points</h2>
         <div class="point">
