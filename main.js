@@ -128,7 +128,7 @@ const gamePlayWins = () => {
     $displayPoints.text($points);
     $results.html( `
       <div>
-        <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
+        <img src="game-images/crystalball.gif" alt="" style="height:60px;">
         <h2>Congratulations!</h2>
         <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
         <p style="margin-bottom: 20px;">Here is your fortune reading for today:</p>
@@ -142,7 +142,7 @@ const gamePlayLoses = () => {
     $endPageContainer.removeClass('hide');
     $results.html( `
       <div>
-        <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
+        <img src="game-images/crystalball.gif" alt="" style="height:60px;">
         <h2>Time's up!</h2>
         <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
         <p style="margin-bottom: 20px;">Here is your fortune reading for today:</p>
