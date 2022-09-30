@@ -1,7 +1,7 @@
 # Tarot Card Memory Game
 This is a tarot card theme memory game.
-Click <a href="https://hovivian.github.io/project-1/">here</a> to start playing
 <img src="main.png" alt="game-main-screen"/>
+Click <a href="https://hovivian.github.io/project-1/">here</a> to start playing
 
 ## Game Instructions
 ### Rules:

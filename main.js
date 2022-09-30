@@ -61,7 +61,7 @@ const matchedCards = () => {
       matchedSound();
       matched.push(choiceOne)
       console.log("matched cards!");
-      if (matched.length>=8){
+      if (matched.length>=8 || matched.length>=18){
         gamePlayWins();
         clearInterval(timeInterval);
       }
