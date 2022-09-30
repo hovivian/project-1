@@ -13,6 +13,8 @@ const $clickSound = $("#clickSound");
 const $matchedSound = $("#matchedSound");
 const $wrongSound = $("#wrongSound");
 const $winSound = $("#winSound");
+const $info = $(".info");
+const $body = $("body");
 
 // Game finishes
 const $endPageContainer = $(".endPageContainer");
@@ -30,7 +32,7 @@ let $time = $startingMinute * 60;
 
 // Bonus
 let randomNum = Math.floor(Math.random() * 9);
-const cardReadingContent = ["You'll feel drawn to the comforts of your bed this afternoon.", "Your aura will be blessed with a powerful and mysterious allure this evening.", "You are going to have a really great lunch today.","You will be hungry again in one hour.","The fortune you seek is in another card.","You will live a long time, long enough to play many many memory games.","You will click the button below to play another round of memory game.","I don't know the future, I'm just a memory game."];
+const cardReadingContent = ["You'll feel drawn to the comforts of your bed this afternoon.", "Your aura will be blessed with a powerful and mysterious allure this evening.", "You are going to have a really great lunch today.","You will be hungry again in one hour.","The fortune you seek is in another card.","You will live a long time, long enough to play many many memory games.","You will click the button below to play another round of memory game.","I can't predict the future, I'm just a memory game."];
 
 const updateTime = () => {
   if ($time>=0) {
@@ -114,8 +116,6 @@ const handleClick = (e) => {
     }
 }
 
-// const $firstMove = $();
-
 const cardReading = () => {
   `cardReadingContent.${n}`
 }
@@ -157,6 +157,9 @@ const startGame16 = () => {
   generateGrid(4);
   $startPage.remove();
   $endPageContainer.addClass('hide');
+  $body.addClass('body-column');
+  $info.removeClass('info-36');
+  $info.addClass('info-16');
 }
 
 const startGame36 = () => {
@@ -164,6 +167,11 @@ const startGame36 = () => {
   generateGrid(6);
   $startPage.remove();
   $endPageContainer.addClass('hide');
+  $info.removeClass('info-16');
+  $info.addClass('info-36');
+  $body.addClass('body-row');
+  $card.removeClass('view');
+  $card.addClass('view-36');
 }
 
 $startGameBtn16.on("click", startGame16);
@@ -200,8 +208,8 @@ const generateGrid = (rows) => {
   shuffled.forEach((imageKey, i) => {
     $container.append(`
       <div class="card rows-col-${rows * rows}" data-id="${i}" data-type="card-${imageKey}" id="gameCards">
-        <img src="game-images/front-view-${imageKey}.png" alt="" class="front-view view"/>
-        <img src="game-images/back-view.png" alt="" class="back-view view" />
+        <img src="game-images/front-view-${imageKey}.png" alt="" class="front-view view-${rows*rows}"/>
+        <img src="game-images/back-view.png" alt="" class="back-view view-${rows*rows}" />
       </div>
     `)
   });

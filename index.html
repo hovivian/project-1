@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Memory Game</title>
+    <title>Tarot Card Memory Game</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="/game-images/front-view-2.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -18,7 +19,6 @@
     <audio id="matchedSound" preload="auto" src ="sound-effects/matched.mp3"></audio>
     <audio id="wrongSound" preload="auto" src ="sound-effects/wrong.mp3"></audio>
     <audio id="winSound" preload="auto" src ="sound-effects/win.mp3"></audio>
-
   </head>
   <body>
       <div class="startPage">
@@ -33,7 +33,7 @@
         <p>How to play: match as many cards as possible under 2 minutes.</p>
       </div>
       </div>
-    <section class="info">
+    <section class="info .info-16">
       <div class="time">
         <h2>Time</h2>
         <div class="timer"><p id="timeLeft">2: 00</p></div>
