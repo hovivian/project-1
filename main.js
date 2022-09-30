@@ -131,7 +131,7 @@ const gamePlayWins = () => {
         <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
         <h2>Congratulations!</h2>
         <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
-        <p style="margin-bottom: 20px;">Here is  your fortune reading for today:</p>
+        <p style="margin-bottom: 20px;">Here is your fortune reading for today:</p>
         <p style="color: white; margin-bottom: 20px; font-size:16px;">${cardReadingContent[randomNum]}</p>
         <p>Start another game?</p>
       </div>
@@ -145,7 +145,7 @@ const gamePlayLoses = () => {
         <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
         <h2>Time's up!</h2>
         <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
-        <p style="margin-bottom: 20px;">Here is  your fortune reading for today:</p>
+        <p style="margin-bottom: 20px;">Here is your fortune reading for today:</p>
         <p style="color: white; margin-bottom: 20px; font-size:16px;">${cardReadingContent[randomNum]}</p>
         <p>Start another game?</p>
       </div>
