@@ -6,29 +6,28 @@
 
 body {
   height: 100vh;
+  padding: 30px;
   background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
   align-items: center;
   font-family: "Poppins", sans-serif;
 }
 
 .info {
-  width: 200px;
-  height: 640px;
-  margin-right: 40px;
+  width: 500px;
+  height: 100px;
   display: flex;
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .time,
 .points {
-  width: 150px;
-  height: 40px;
+  width: 200px;
+  height: 30px;
   text-align: center;
 }
 
@@ -36,7 +35,7 @@ body {
 #timeLeft {
   padding: 10px;
   background-color: rgba(255,255,255, 0.95);
-  font-size: 24px;
+  font-size: 18px;
   border: 2px solid #d4bada;
   border-radius: 5px;
 }
@@ -44,6 +43,7 @@ body {
 h2,
 p {
   color: #e71b64;
+  font-size: 18px;
 }
 
 .startPage {
@@ -79,8 +79,8 @@ p {
 }
 
 .container {
-  width: 640px;
-  height: 640px;
+  width: 550px;
+  height: 550px;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -145,9 +145,13 @@ p {
   width: 100%;
   height: 100%;
   position: absolute;
-  padding: 20px;
+  padding: 24px;
   backface-visibility: hidden;
 }
+
+/* .view.back-view {
+  padding:10px;
+} */
 
 .front-view {
   transform: rotateY(180deg);
@@ -155,13 +159,15 @@ p {
 
 .endPageContainer {
   background:rgba(212,186,218, 0.98);
-  height: 42%;
-  width: 32%;
+  height: 50%;
+  width: 40%;
+  padding: 0 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   border-radius: 10px;
+  border: 3px solid white;
   text-align: center;
 }
 
@@ -179,10 +185,11 @@ p {
 #reset {
   cursor: pointer;
   color: #d4bada;
-  margin: 30px 40px;
+  margin: 15px 40px;
   padding: 10px;
-  /* background-color: #c7e8f7; */
   font-size: 18px;
+  border: 1px solid #d4bada;
+  border-radius: 5px;
 }
 
 .hide {

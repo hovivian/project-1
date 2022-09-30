@@ -1,23 +1,21 @@
 // Cards Related
 const $container = $(".container");
 const $card = $(".card");
-const card = document.querySelector(".card");
 let choices = [];
 let matched = [];
-let winGame = matched.length;
 
 // Controls
 const $startGameBtn16 = $("#start-btn-16");
 const $startGameBtn36 = $("#start-btn-36");
-const $resetBtn = $("#reset")
+const $resetBtn = $("#reset");
 const $startPage = $(".startPage");
-const $clickSound = $("#clickSound")
-const $matchedSound = $("#matchedSound")
-const $wrongSound = $("#wrongSound")
-const $winSound = $("#winSound")
+const $clickSound = $("#clickSound");
+const $matchedSound = $("#matchedSound");
+const $wrongSound = $("#wrongSound");
+const $winSound = $("#winSound");
 
 // Game finishes
-const $endPageContainer = $(".endPageContainer")
+const $endPageContainer = $(".endPageContainer");
 const $results = $(".results");
 
 // Points
@@ -29,6 +27,10 @@ const $timeLeft = $("#timeLeft");
 const $startingMinute = 2;
 let timeInterval = null;
 let $time = $startingMinute * 60;
+
+// Bonus
+let randomNum = Math.floor(Math.random() * 9);
+const cardReadingContent = ["You'll feel drawn to the comforts of your bed this afternoon.", "Your aura will be blessed with a powerful and mysterious allure this evening.", "You are going to have a really great lunch today.","You will be hungry again in one hour.","The fortune you seek is in another card.","You will live a long time, long enough to play many many memory games.","You will click the button below to play another round of memory game.","I don't know the future, I'm just a memory game."];
 
 const updateTime = () => {
   if ($time>=0) {
@@ -112,16 +114,25 @@ const handleClick = (e) => {
     }
 }
 
+// const $firstMove = $();
+
+const cardReading = () => {
+  `cardReadingContent.${n}`
+}
+
 const gamePlayWins = () => {
     winSound();
     console.log("game end!");
     $endPageContainer.removeClass("hide");
     $points += ($time * 10)+10;
+    $displayPoints.text($points);
     $results.html( `
       <div>
+        <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
         <h2>Congratulations!</h2>
-        <h2 style="margin-bottom: 20px;">You scored ${$points} points!</h2>
-        <p style="margin-bottom: 20px;"> Here is your fortune of the day: ${matched[0]}</p>
+        <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
+        <p style="margin-bottom: 20px;">Here is  your fortune reading for today:</p>
+        <p style="color: white; margin-bottom: 20px; font-size:16px;">${cardReadingContent[randomNum]}</p>
         <p>Start another game?</p>
       </div>
     `)
@@ -131,8 +142,11 @@ const gamePlayLoses = () => {
     $endPageContainer.removeClass('hide');
     $results.html( `
       <div>
-        <h2 style="margin-bottom: 20px;">Time's up! You scored ${$points} points!</h2>
-        <p style="margin-bottom: 20px;"> Here is your fortune of the day: ${matched[0]}</p>
+        <img src="/game-images/crystalball.gif" alt="" style="height:60px;">
+        <h2>Time's up!</h2>
+        <h2 style="margin-bottom: 20px;">You scored ${$points} points.</h2>
+        <p style="margin-bottom: 20px;">Here is  your fortune reading for today:</p>
+        <p style="color: white; margin-bottom: 20px; font-size:16px;">${cardReadingContent[randomNum]}</p>
         <p>Start another game?</p>
       </div>
     `)
@@ -194,14 +208,3 @@ const generateGrid = (rows) => {
 }
 
 $container.on("click", '.card', handleClick);
-
-
-
-//bonus
-// const $firstMove = $();
-// return the value of the first matched card
-
-// const cardReading: {
-//   card1: "You'll feel drawn to the comforts of your bed this afternoon.",
-//   card2: "Your aura will be blessed with a powerful and mysterious allure this morning."
-//
